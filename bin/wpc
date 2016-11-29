@@ -1,0 +1,18 @@
+#!/bin/sh
+# add local and global node_modules to the path
+# https://gist.github.com/branneman/8048520#4-the-environment
+if [ ! -z "NODE_PATH" ]
+then
+  local_node_modules="$PWD/node_modules"
+  global_node_modules=$(dirname $(dirname $(dirname $(realpath `which webpack`))))
+  export NODE_PATH="$local_node_modules:$global_node_modules"
+fi
+
+export NODE_ENV=${NODE_ENV:-development}
+
+if [ "$NODE_ENV" = "development" ]
+then
+  webpack-dev-server $*
+else
+  webpack $*
+fi
