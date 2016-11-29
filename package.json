@@ -12,6 +12,9 @@
     "webpack",
     "config"
   ],
+  "bin": {
+    "wpc": "./bin/wpc"
+  },
   "files": [
     "bin",
     "*.js"

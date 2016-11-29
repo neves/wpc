@@ -1,6 +1,13 @@
 #!/bin/sh
 # add local and global node_modules to the path
 # https://gist.github.com/branneman/8048520#4-the-environment
+
+if [ ! -x "$(command -v webpack)" ]
+then
+  echo "Missing webpack in path. Install it with yarn or npm"
+  exit 1
+fi
+
 if [ ! -z "NODE_PATH" ]
 then
   local_node_modules="$PWD/node_modules"
@@ -12,7 +19,7 @@ export NODE_ENV=${NODE_ENV:-development}
 
 if [ "$NODE_ENV" = "development" ]
 then
-  webpack-dev-server $*
+  webpack-dev-server $@
 else
-  webpack $*
+  webpack $@
 fi
