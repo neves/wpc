@@ -8,6 +8,12 @@ then
   exit 1
 fi
 
+if [ ! -x "$(command -v webpack-dev-server)" ]
+then
+  echo "Missing webpack-dev-server in path. Install it with yarn or npm"
+  exit 1
+fi
+
 if [ ! -z "NODE_PATH" ]
 then
   local_node_modules="$PWD/node_modules"
