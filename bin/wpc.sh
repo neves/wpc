@@ -11,8 +11,11 @@ then
 fi
 
 cmd=$($cli $@)
-echo "\033[0;36m$cmd\033[0m"
-# echo $cmd | sh
-sh -c "$cmd"
-
-exit
+if [ $? -eq 0 ]
+then
+  echo "\033[0;36m$cmd\033[0m"
+  # echo $cmd | sh
+  sh -c "$cmd"
+else
+  echo "\033[0;31m$cmd\033[0m"
+fi
