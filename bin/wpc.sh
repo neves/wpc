@@ -11,11 +11,13 @@ then
 fi
 
 cmd=$($cli $@)
-if [ $? -eq 0 ]
+if [ $? -eq 0 ] # continue only if wpc-cli exits with 0
 then
   echo "\033[0;36m$cmd\033[0m"
   # echo $cmd | sh
   sh -c "$cmd"
-else
+else # just show the wpc-cli message in red
   echo "\033[0;31m$cmd\033[0m"
 fi
+
+exit $?
