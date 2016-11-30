@@ -18,7 +18,8 @@
   },
   "files": [
     "bin/",
-    "*.js"
+    "*.js",
+    "index.html"
   ],
   "engines": {
     "node": ">=0.12"
