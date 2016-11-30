@@ -1,5 +1,5 @@
 module.exports = {
-  packages: ['vue-loader@^10.0.1'],
+  packages: ['vue-loader@^10.0.1', 'vue-template-compiler@2.1.3'],
   module: {
     rules: [
       {
