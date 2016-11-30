@@ -18,9 +18,10 @@ if [ ! -z "NODE_PATH" ]
 then
   local_node_modules="$PWD/node_modules"
   global_node_modules=$(dirname $(dirname $(dirname $(realpath `which webpack`))))
-  export NODE_PATH="$local_node_modules:$global_node_modules"
+  wpc=$(dirname $(dirname $(dirname $(realpath $0))))
+  export NODE_PATH="$local_node_modules:$global_node_modules:$wpc"
 fi
-
+# echo $NODE_PATH
 export NODE_ENV=${NODE_ENV:-development}
 
 if [ "$NODE_ENV" = "development" ]
