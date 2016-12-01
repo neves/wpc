@@ -1,9 +1,10 @@
 const webpack = require('webpack')
 const resolve = require('path').resolve
+const fs = require('fs')
 
 function getVersionFromPackage () {
-  const pkg = require.resolve(resolve(process.cwd(), 'package.json'))
-  return pkg ? require(pkg).version : '0.0.0'
+  const pkg = resolve(process.cwd(), 'package.json')
+  return fs.existsSync(pkg) ? require(pkg).version : '0.0.0'
 }
 
 module.exports = {
