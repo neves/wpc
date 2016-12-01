@@ -5,15 +5,17 @@
 dir=$(dirname $0)
 cli="$dir/wpc-cli.js" # local
 
-if [ ! -a "$cli" ]
+if [ -a "$cli" ]
 then
+  true
+else
   cli="wpc-cli" # global
 fi
 
 cmd=$($cli $@)
 if [ $? -eq 0 ] # continue only if wpc-cli exits with 0
 then
-  echo "\033[0;36m$cmd\033[0m"
+  echo "\n\033[0;36m$cmd\033[0m\n"
   # echo $cmd | sh
   sh -c "$cmd"
 else # just show the wpc-cli message in red

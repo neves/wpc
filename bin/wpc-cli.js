@@ -41,6 +41,7 @@ function isValidNodeModules(nodeModulePath) {
 
 const nodePath = [
   path.resolve(process.cwd(), 'node_modules'), // local project
+  path.resolve(process.env.NODE_PATH || ''), // current NODE_PATH if exists (only one)
   path.resolve(__dirname, '../node_modules'), // wpc
   path.resolve(__dirname, '../..') // global
 ].filter(isValidNodeModules).join(path.delimiter)
