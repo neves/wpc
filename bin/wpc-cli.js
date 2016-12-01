@@ -46,6 +46,9 @@ const nodePath = [
   path.resolve(__dirname, '../..') // global
 ].filter(isValidNodeModules).join(path.delimiter)
 
+// resolve absolute path to webpack bin (don't require webpack executable to be on global path)
+webpack = require.resolve(`.bin/${webpack}`)
+
 const run = `NODE_ENV=${env} NODE_PATH=${nodePath} ${webpack} ${args.join(' ')}`
 
 console.log(run)
