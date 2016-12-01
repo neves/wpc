@@ -2,15 +2,8 @@
 # add local and global node_modules to the path
 # https://gist.github.com/branneman/8048520#4-the-environment
 
-dir=$(dirname $0)
-cli="$dir/wpc-cli.js" # local
-
-if [ -a "$cli" ]
-then
-  true
-else
-  cli="wpc-cli" # global
-fi
+# find absolute path to node_modules/wpc/bin/wpc-cli.js
+cli=$(node -e "console.log(require('path').resolve(require('fs').realpathSync('$0'), '../wpc-cli.js'))")
 
 cmd=$($cli $@)
 if [ $? -eq 0 ] # continue only if wpc-cli exits with 0
