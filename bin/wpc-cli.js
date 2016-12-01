@@ -39,15 +39,15 @@ function isValidNodeModules(nodeModulePath) {
   return path.basename(nodeModulePath) === 'node_modules' && fs.existsSync(nodeModulePath)
 }
 
-const nodePath = [
+var nodePath = [
   path.resolve(process.cwd(), 'node_modules'), // local project
-  path.resolve(process.env.NODE_PATH || ''), // current NODE_PATH if exists (only one)
   path.resolve(__dirname, '../node_modules'), // wpc
   path.resolve(__dirname, '../..') // global
 ].filter(isValidNodeModules).join(path.delimiter)
 
-// resolve absolute path to webpack bin (don't require webpack executable to be on global path)
-webpack = require.resolve(`.bin/${webpack}`)
+if (process.env.NODE_PATH) {
+  nodePath += path.delimiter + process.env.NODE_PATH
+}
 
 const run = `NODE_ENV=${env} NODE_PATH=${nodePath} ${webpack} ${args.join(' ')}`
 
