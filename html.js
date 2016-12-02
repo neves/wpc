@@ -1,11 +1,17 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const resolve = require('path').resolve
+const fs = require('fs')
 
-module.exports = {
+function localOrGlobalHtmlTemplate (src) {
+  var local = resolve(src, 'index.html')
+  return fs.existsSync(local) ? local : resolve(__dirname, 'index.html')
+}
+
+module.exports = ({env}) => ({
   packages: ['html-webpack-plugin@^2.24.1'],
   plugins: [
     new HtmlWebpackPlugin({
-      template: resolve(__dirname, 'index.html')
+      template: localOrGlobalHtmlTemplate(env.src)
     })
   ]
-}
+})
