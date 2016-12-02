@@ -29,4 +29,5 @@ function translate (data) {
 module.exports = function (config) {
   config = translate(config)
   console.log( format(config) )
+  console.log()
 }

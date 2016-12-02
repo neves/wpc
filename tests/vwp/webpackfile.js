@@ -1,16 +1,20 @@
 merge = require('wpc/merge')
+const Path = require('path')
 
 module.exports = env => merge(
   require('wpc/defaults'),
-{
-  env: {
-    src: process.cwd() + '/src'
+  {
+    env: {
+      debug: process.env.DEBUG || ['--debug', '-d', '--verbose'].some(e => process.argv.includes(e)),
+      src: process.cwd() + '/src'
+    },
+    entry: './src/index.js',
+    output: {
+      path: Path.resolve(__dirname, '../dist'),
+      filename: 'bundle.js'
+    }
   },
-  entry: './src/index.js',
-  output: {
-    filename: 'bundle.js'
-  }
-},
+  {env},
   require('wpc/resolve-src'),
   require('wpc/global-modules'),
   require('wpc/global-loaders'),
