@@ -1,13 +1,14 @@
-const Path = require('path')
-
-// must be absolute path to node_modules
-var nodeModules = [
-  Path.resolve(__dirname, 'node_modules'),
-  Path.dirname(__dirname)
-].filter(module => module.endsWith(Path.sep + 'node_modules'))
+const fs = require('fs')
 
 module.exports = {
   resolve: {
-    modules: nodeModules
+    /**
+     * Use the already computed module.paths (node_modules recursive to root /node_modules)
+     * .config/yarn/global/node_modules/vwp/node_modules/wpc/node_modules
+     * .config/yarn/global/node_modules/vwp/node_modules
+     * .config/yarn/global/node_modules
+     * filter only folders that exists
+     */
+    modules: module.paths.filter(fs.existsSync)
   }
 }
