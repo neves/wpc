@@ -1,5 +1,5 @@
 module.exports = {
-  dependencies: ['yml-loader@^1.1.0'],
+  packages: ['yml-loader@^1.1.0'],
   module: {
     rules: [
       {

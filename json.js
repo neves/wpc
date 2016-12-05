@@ -1,5 +1,5 @@
 module.exports = {
-  dependencies: ['json-loader@^0.5.4'],
+  packages: ['json-loader@^0.5.4'],
   module: {
     rules: [
       {
