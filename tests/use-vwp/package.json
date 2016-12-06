@@ -5,7 +5,8 @@
   "main": "bundle.js",
   "scripts": {
     "build": "../vwp/bin/vwp build",
-    "dist": "../vwp/bin/vwp dist"
+    "dist": "../vwp/bin/vwp dist",
+    "dev": "../vwp/bin/vwp dev"
   },
   "keywords": [],
   "author": "Marcos Neves <marcos.neves@gmail.com> (http://neves.github.io/)",

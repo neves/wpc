@@ -1,11 +1,15 @@
 merge = require('wpc/merge')
 const Path = require('path')
 
-module.exports = env => merge(
-  require('wpc/defaults'),
+module.exports = (env, argv) => merge(
+  {env, argv},
+  require('wpc/required'), // required or defaults, not both
+  // require('wpc/defaults'),
+  require('wpc/argv'),
+  require('wpc/dev-server'),
+
   {
     env: {
-      debug: process.env.DEBUG || ['--debug', '-d', '--verbose'].some(e => process.argv.includes(e)),
       src: process.cwd() + '/src'
     },
     entry: './src/index.js',
@@ -13,7 +17,6 @@ module.exports = env => merge(
       path: Path.resolve(__dirname, '../dist')
     }
   },
-  {env},
 
   require('wpc/resolve-src'),
   require('wpc/global-modules'),
@@ -34,11 +37,6 @@ module.exports = env => merge(
 
   require('wpc/vue'),
   require('wpc/vue-babel'),
-  require('wpc/vue-pug'),
-  require('wpc/vue-scss'),
-  require('wpc/vue-sass'),
-  require('wpc/vue-less'),
-  require('wpc/vue-stylus'),
 
   require('wpc/vendor'),
   require('wpc/manifest'),

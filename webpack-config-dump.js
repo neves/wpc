@@ -22,7 +22,9 @@ function pluginToObject (plugin) {
 
 function translate (data) {
   json = JSON.parse( JSON.stringify(data, replacer) )
-  json.plugins = data.plugins.map(plugin => pluginToObject(plugin))
+  if (data.plugins) {
+    json.plugins = data.plugins.map(plugin => pluginToObject(plugin))
+  }
   return json
 }
 
