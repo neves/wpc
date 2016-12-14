@@ -9,7 +9,9 @@ module.exports = ({devtool}) => {
           loader: 'vue-loader',
           options: {
             loaders: {
-              pug: 'pug-loader',
+              // If specified, generates error:
+              // [Vue warn]: Failed to mount component: template or render function not defined
+              // pug: 'pug-loader', converts to string instead of javascript
               css: `style-loader!css-loader${sourceMap}`,
               stylus: `style-loader!css-loader${sourceMap}!stylus-loader${sourceMap}`,
               less: `style-loader!css-loader${sourceMap}!less-loader${sourceMap}`,
