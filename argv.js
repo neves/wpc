@@ -1,8 +1,6 @@
-// copy from argv to config
-module.exports = ({argv:{context, devtool, entry, output, debug} = {}}) => ({
+module.exports = ({argv:{context, devtool, entry, output} = {}}) => ({
   context,
   devtool,
   entry,
-  output,
-  debug
+  output
 })
