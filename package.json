@@ -39,9 +39,9 @@
     "css-loader": "^0.26.1",
     "html-webpack-plugin": "^2.24.1",
     "json-loader": "^0.5.4",
-    "less": "^2.7.1",
+    "less": "^2.7.2",
     "less-loader": "^2.2.3",
-    "node-sass": "^4.1.1",
+    "node-sass": "^4.3.0",
     "pug": "^2.0.0-beta6",
     "pug-loader": "^2.0.3",
     "reset-css": "^2.2.0",
@@ -52,8 +52,8 @@
     "vue": "^2.1.8",
     "vue-loader": "^10.0.1",
     "vue-template-compiler": "^2.1.8",
-    "webpack": "^2.1.0-beta.27",
-    "webpack-dev-server": "^2.1.0-beta.12",
+    "webpack": ">=2.2.0-rc.6",
+    "webpack-dev-server": ">=2.2.0-rc.0",
     "yml-loader": "^1.1.0"
   }
 }
