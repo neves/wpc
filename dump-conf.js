@@ -1,7 +1,7 @@
 const dump = require('./webpack-config-dump')
 
-module.exports = config => {
-  if (config && config.argv && config.argv.debug) {
+module.exports = ({argv}) => {
+  if (argv && argv.debug) {
     dump(config)
   }
 }
