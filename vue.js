@@ -1,7 +1,29 @@
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+
+// create repetitive ExtractTextPlugin.extract
+function extract (devtool, loader = 'css', indentedSyntax = '') {
+  var engine = []
+  var sourceMap = !!devtool ? 'sourceMap' : ''
+  if (loader !== 'css') {
+    engine = [ // query must be string, object doesn't work
+      {loader: `${loader}-loader?${sourceMap}&${indentedSyntax}`}
+    ]
+  }
+  return ExtractTextPlugin.extract({
+    fallback: 'vue-style-loader',
+    use: [
+      {loader: `css-loader?${sourceMap}`},
+      ...engine
+    ]
+  })
+}
+
 module.exports = ({devtool}) => {
-  var sourceMap = `?sourceMap=${!!devtool}`
   return {
-    packages: ['vue-loader@^10.0.1', 'vue-template-compiler@2.1.4'],
+    packages: ['vue-loader', 'vue-template-compiler'],
+    resolve: {
+      extensions: ['.js', '.vue']
+    },
     module: {
       rules: [
         {
@@ -9,21 +31,19 @@ module.exports = ({devtool}) => {
           loader: 'vue-loader',
           options: {
             loaders: {
-              // If specified, generates error:
+              css: extract(devtool),
+              stylus: extract(devtool, 'stylus'),
+              less: extract(devtool, 'less'),
+              scss: extract(devtool, 'sass'),
+              sass: extract(devtool, 'sass', 'indentedSyntax')
+
+              // DO NOT NEED to add pug, if specified, generates error:
               // [Vue warn]: Failed to mount component: template or render function not defined
               // pug: 'pug-loader', converts to string instead of javascript
-              css: `style-loader!css-loader${sourceMap}`,
-              stylus: `style-loader!css-loader${sourceMap}!stylus-loader${sourceMap}`,
-              less: `style-loader!css-loader${sourceMap}!less-loader${sourceMap}`,
-              scss: `style-loader!css-loader${sourceMap}!sass-loader${sourceMap}`,
-              sass: `style-loader!css-loader${sourceMap}!sass-loader${sourceMap}&indentedSyntax=true`
             }
           }
         }
       ]
-    },
-    resolve: {
-      extensions: ['.vue']
     }
   }
 }
