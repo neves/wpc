@@ -9,6 +9,6 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.coffee']
+    extensions: ['.coffee'] // remember to add .js using required.js
   }
 }
