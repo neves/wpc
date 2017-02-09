@@ -1,4 +1,4 @@
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const ExtractTextPlugin = require.main.require('extract-text-webpack-plugin')
 
 // create repetitive ExtractTextPlugin.extract
 function extract (devtool, loader = 'css', indentedSyntax = '') {
