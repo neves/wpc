@@ -4,16 +4,16 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 // create repetitive ExtractTextPlugin.extract
 function extract (devtool, loader = 'css', indentedSyntax = '') {
   var engine = []
-  var sourceMap = !!devtool ? 'sourceMap' : ''
+  var sourceMap = !!devtool ? '?sourceMap' : ''
   if (loader !== 'css') {
-    engine = [ // query must be string, object doesn't work
-      {loader: `${loader}-loader?${sourceMap}&${indentedSyntax}`}
+    engine = [ // query must be string, object doesn't work. And can't have extra ? or &
+      {loader: `${loader}-loader${sourceMap}${indentedSyntax}`}
     ]
   }
   return ExtractTextPlugin.extract({
     fallback: 'vue-style-loader',
     use: [
-      {loader: `css-loader?${sourceMap}`},
+      {loader: `css-loader${sourceMap}`},
       ...engine
     ]
   })
@@ -36,7 +36,7 @@ module.exports = ({devtool}) => {
               stylus: extract(devtool, 'stylus'),
               less: extract(devtool, 'less'),
               scss: extract(devtool, 'sass'),
-              sass: extract(devtool, 'sass', 'indentedSyntax')
+              sass: extract(devtool, 'sass', '&indentedSyntax')
 
               // DO NOT NEED to add pug, if specified, generates error:
               // [Vue warn]: Failed to mount component: template or render function not defined
