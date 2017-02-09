@@ -30,6 +30,12 @@ switch (cmd) {
     args.push('--hot')
     break
 
+  case '--version':
+  case '-v':
+    console.log(require('../package.json').version)
+    process.exit(1)
+    return
+
   default:
     console.log('missing command: build, dev or dist')
     process.exit(1)

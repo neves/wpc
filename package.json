@@ -12,10 +12,7 @@
     "webpack",
     "config"
   ],
-  "bin": {
-    "wpc": "./bin/wpc.sh",
-    "wpc-cli": "./bin/wpc-cli.js"
-  },
+  "bin": "./bin/wpc",
   "files": [
     "bin/",
     "*.js",

@@ -41,7 +41,7 @@ module.exports = ({devtool}) => ({
     new ExtractTextPlugin({
       filename: '[name].css', // TODO: define by config with contenthash:5
       allChunks: true,
-      disable: false // TODO: make it possible to disable
+      disable: process.env.NODE_ENV === 'development'
     })
   ]
 })
