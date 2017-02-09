@@ -1,4 +1,5 @@
-const ExtractTextPlugin = require.main.require('extract-text-webpack-plugin')
+// Added to wpc package.json dependencies to stop conflicting with older version at global yarn
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 // create repetitive ExtractTextPlugin.extract
 function extract (devtool, loader = 'css', indentedSyntax = '') {
