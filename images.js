@@ -1,4 +1,4 @@
-module.exports = {
+module.exports = ({env}) => ({
   packages: ['url-loader@^0.5.7', 'file-loader@^0.9.0'],
   module: {
     rules: [
@@ -6,10 +6,10 @@ module.exports = {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
         options: {
-          name: 'img/[name].[ext]',
+          name: env.img,
           limit: 1024
         }
       }
     ]
   }
-}
+})

@@ -1,11 +1,11 @@
-module.exports = {
+module.exports = ({env}) => ({
   context: process.cwd(),
-  entry: 'main.js',
+  entry: './main.js',
   output: {
-    filename: '[name].js'
+    filename: env.js
   },
   resolve: {
     modules: ['node_modules'], // project local node_modules
     extensions: ['.js']
   }
-}
+})

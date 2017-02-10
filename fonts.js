@@ -1,4 +1,4 @@
-module.exports = {
+module.exports = ({env}) => ({
   packages: ['url-loader@^0.5.7', 'file-loader@^0.9.0'],
   module: {
     rules: [
@@ -6,10 +6,10 @@ module.exports = {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url-loader',
         options: {
-          name: 'fonts/[name].[ext]',
+          name: env.font,
           limit: 2048
         }
       }
     ]
   }
-}
+})

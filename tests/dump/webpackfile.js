@@ -1,8 +1,8 @@
 const merge = require('../../merge')
 
 module.exports = (env, argv) => merge(
-  {argv},
-  require('../../defaults'),
+  // require('../../defaults'),
+  {env, argv},
   require('../../dump-conf'),
   require('../../delete-properties')
 )

@@ -25,7 +25,7 @@ function extract (devtool, loader = 'css', opt = {}) {
   })
 }
 
-module.exports = ({devtool}) => ({
+module.exports = ({devtool, env}) => ({
   packages: ['css-loader@^0.26.1', 'style-loader@^0.13.1', 'extract-text-webpack-plugin@^2.0.0-rc.3'],
   module: {
     rules: [
@@ -39,7 +39,7 @@ module.exports = ({devtool}) => ({
 
   plugins: [ // Must be included if used above
     new ExtractTextPlugin({
-      filename: '[name].css', // TODO: define by config with contenthash:5
+      filename: env.css,
       allChunks: true,
       disable: process.env.NODE_ENV === 'development'
     })
