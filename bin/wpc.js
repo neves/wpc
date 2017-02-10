@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+// Suggestion cli lib: https://github.com/tj/commander.js
 // Alternative: https://github.com/jprichardson/node-kexec (unix only)
 
 const path = require('path')

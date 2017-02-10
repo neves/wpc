@@ -12,3 +12,4 @@ module.exports = ({env, argv}) => {
     }
   }
 }
+// name.replace(/\[(\w+)?hash(:\d)?\]\./, '')
