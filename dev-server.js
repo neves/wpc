@@ -3,8 +3,9 @@
 const schema = require('webpack-dev-server/lib/optionsSchema.json')
 
 module.exports = ({argv}) => {
-  const keys = Object.keys(schema.properties)
-  var devServer = {}
-  keys.map(k => argv[k] && (devServer[k] = argv[k]) )
-  return {devServer}
+  var devServer = {} // copy keys from args to devServer
+  Object.keys(schema.properties).map(k => argv[k] && (devServer[k] = argv[k]) )
+  return {
+    devServer
+  }
 }
