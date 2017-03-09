@@ -4,7 +4,7 @@
 // Alternative: https://github.com/jprichardson/node-kexec (unix only)
 
 const path = require('path')
-const fs = require( 'fs')
+const fs = require('fs')
 
 const cmd = process.argv[2]
 const args = process.argv.slice(3)
