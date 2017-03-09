@@ -7,6 +7,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "upgrade:check": "ncu",
+    "upgrade:apply": "ncu -a",
     "deploy": "npm version patch && git push --follow-tags && npm publish"
   },
   "keywords": [
