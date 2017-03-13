@@ -1,0 +1,15 @@
+{
+  "name": "css",
+  "version": "0.0.1",
+  "description": "",
+  "main": "entry.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Marcos Neves <marcos.neves@gmail.com> (http://neves.github.io/)",
+  "license": "MIT",
+  "dependencies": {
+    "reset.css": "^2.0.2"
+  }
+}
