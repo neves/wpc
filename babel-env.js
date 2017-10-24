@@ -5,7 +5,7 @@ module.exports = ({module}) => {
   if (babelLoader) {
     babelLoader.options = merge(babelLoader.options, {
       presets: [
-        [require.resolve('babel-preset-es2015'), {modules: false}]
+        [require.resolve('babel-preset-env'), {modules: false}]
       ]
     })
   } else {
@@ -13,6 +13,6 @@ module.exports = ({module}) => {
   }
 
   return {
-    packages: ['babel-preset-es2015@^6.18.0']
+    packages: ['babel-preset-es2015@^1.61.1']
   }
 }
