@@ -1,6 +1,6 @@
 {
   "name": "wpc",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Collection of Webpack config files",
   "author": "Marcos Neves <marcos.neves@gmail.com> (http://neves.github.io/)",
   "license": "MIT",
